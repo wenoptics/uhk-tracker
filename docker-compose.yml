@@ -9,15 +9,15 @@ volumes:
   mongo_data: {}
 
 services:
-#  web:
-#    build:
-#    # build from Dockerfile
-#      context: ./Path
-#      dockerfile: Dockerfile
-#    ports:
-#     - "5000:5000"
-#    volumes:
-#     - .:/code
+  website_scraper:
+    build:
+      # build from Dockerfile
+      context: ./website_scraper
+      dockerfile: Dockerfile
+    environment:
+      MONGODB_URI: mongodb://root:example@mongo:27017/
+    depends_on:
+      - mongo
 
   mongo:
     image: mongo:5

@@ -7,6 +7,9 @@ mod models;
 mod persistence;
 mod read_web;
 
+///
+/// Business login entrance
+///
 async fn scrap_then_save() -> Result<(), Box<dyn Error>> {
     let data_point = read_web::collect_from_website().await.unwrap();
     persistence::save_to_db(&data_point).await?;
