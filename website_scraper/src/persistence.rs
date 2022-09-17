@@ -1,9 +1,9 @@
+use mongodb::{
+    options::{ClientOptions, ResolverConfig},
+    Client,
+};
 use std::env;
 use std::error::Error;
-use mongodb::{
-    Client,
-    options::{ClientOptions, ResolverConfig},
-};
 
 use crate::models::ShipmentUpdate;
 
