@@ -25,9 +25,6 @@ pub async fn collect_from_website() -> Result<ShipmentUpdate, Box<dyn std::error
 
     // println!("{}", text);
 
-    // Parse the order number range
-    let re_order_num = Regex::new(r"#(\d+)").unwrap();
-
     let mut ret = ShipmentUpdate {
         id: None,
         updated: chrono::Utc::now(),
@@ -36,6 +33,8 @@ pub async fn collect_from_website() -> Result<ShipmentUpdate, Box<dyn std::error
         order_range_r: None,
     };
 
+    // Parse the order number range
+    let re_order_num = Regex::new(r"#(\d+)").unwrap();
     let mut iter = re_order_num.captures_iter(&text);
 
     fn match_or_none(it: &mut CaptureMatches) -> Option<u32> {
